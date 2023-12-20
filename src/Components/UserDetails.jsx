@@ -1,27 +1,21 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const UserDetails = () => {
   const { id } = useParams();
-  const [user, setUser] = useState();
-  useEffect(() => {
-    axios
-      .get(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((res) => {
-        setUser(res.data);
-      });
-  }, [id]);
+  let data = localStorage.getItem(`user-${id}`);
+
+  if (!data) {
+    data = "{}";
+  }
+
+  const user = JSON.parse(data);
 
   return (
     <div>
-      {user ? (
-        <>
-          <h1>{user.name}</h1>
-          <h2>{user.email}</h2>
-          <h3>{user.phone}</h3>
-        </>
-      ) : null}
+      <h1>User Details</h1>
+      <p>Name: {user.name}</p>
+      <p>Email: {user.email}</p>
+      <p>Phone: {user.phone}</p>
     </div>
   );
 };
