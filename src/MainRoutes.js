@@ -1,20 +1,22 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import AboutPage from "./Components/AboutPage";
-import NotFoundPage from "./Components/NotFoundPage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Layout from "./Components/Layout";
+import AboutPage from "./Components/AboutPage";
 import UsersPage from "./Components/UsersPage";
 import UserDetails from "./Components/UserDetails";
+import NotFoundPage from "./Components/NotFoundPage";
 
 const MainRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />} />
-      <Route path="about" element={<AboutPage />} />
-      <Route path="users" element={<UsersPage />} />
-      <Route path="users/:id" element={<UserDetails />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<AboutPage />} />
+          <Route path="users" element={<UsersPage />} />
+          <Route path="users/:id" element={<UserDetails />} />
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Router>
   );
 };
 

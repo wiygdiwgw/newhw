@@ -9,7 +9,7 @@ body {
 }
 
 .navbar {
-  min-height: 10vh;
+  min-height: 8vh;
   background-color: rgb(255, 221, 154);
   display: flex;
   justify-content: space-evenly;
@@ -34,6 +34,7 @@ footer {
   bottom: 0;
   position: absolute;
   width: 100vw;
-  height: 50px;
+  height: 40px;
   background-color: rgb(255, 221, 154);
+  font-size: 40px;
 }
